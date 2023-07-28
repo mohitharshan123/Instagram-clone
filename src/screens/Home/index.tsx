@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { FlatList, Platform, StyleSheet, Text, View } from "react-native";
+import React from "react";
 import Layout from "@components/Layout";
 import PostItem from "@components/PostItem";
 import { useFetchPosts } from "@hooks/api/usePostsApi";
-import InstagramHeader, { HEADER_HEIGHT } from "@components/InstagramHeader";
+import InstagramHeader, { HEADER_HEIGHT } from "@screens/Home/InstagramHeader";
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
@@ -44,10 +43,5 @@ const Home: React.FC<any> = ({}) => {
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  header: { height: 50 },
-  list: { marginTop: 50 },
-});
 
 export default Home;

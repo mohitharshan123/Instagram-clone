@@ -1,12 +1,8 @@
-import { DropdownIcon, InstagramLogo, Heart, Messenger } from "../../assets";
+import { DropdownIcon, InstagramLogo, Heart, Messenger } from "../../../assets";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { View } from "react-native";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import useAnimatedHeader from "@hooks/useAnimatedHeader";
 
 export const HEADER_HEIGHT = 50;

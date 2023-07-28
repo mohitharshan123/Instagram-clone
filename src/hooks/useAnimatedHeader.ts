@@ -1,7 +1,7 @@
 import {
   HEADER_HEIGHT,
   InstagramHeaderProps,
-} from "@components/InstagramHeader";
+} from "@screens/Home/InstagramHeader";
 import {
   useAnimatedStyle,
   interpolate,
