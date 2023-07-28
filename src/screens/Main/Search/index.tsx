@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from "react-native-reanimated";
-import { HEADER_HEIGHT } from "@screens/Home/InstagramHeader";
+import { HEADER_HEIGHT } from "@screens/Main/Home/InstagramHeader";
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from "@constants";
 import TopBar from "./Topbar";
 import { clamp } from "utils";

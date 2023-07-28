@@ -11,7 +11,7 @@ import {
   ReelsActive,
   SearchActive,
   SearchInactive,
-} from "../assets";
+} from "../../../assets";
 
 const Tab = createBottomTabNavigator();
 

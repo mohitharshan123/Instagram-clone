@@ -2,14 +2,16 @@ import React from "react";
 import Layout from "@components/Layout";
 import PostItem from "@components/PostItem";
 import { useFetchPosts } from "@hooks/api/usePostsApi";
-import InstagramHeader, { HEADER_HEIGHT } from "@screens/Home/InstagramHeader";
+import InstagramHeader, {
+  HEADER_HEIGHT,
+} from "@screens/Main/Home/InstagramHeader";
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from "react-native-reanimated";
 import { clamp } from "utils";
 
-const Home: React.FC<any> = ({}) => {
+const Home: React.FC<any> = ({ navigation }) => {
   const { data: posts } = useFetchPosts();
 
   const translationY = useSharedValue(0);
@@ -27,7 +29,7 @@ const Home: React.FC<any> = ({}) => {
 
   return (
     <Layout>
-      <InstagramHeader scrollPosition={translationY} />
+      <InstagramHeader scrollPosition={translationY} navigation={navigation}/>
       <Animated.FlatList
         data={posts}
         renderItem={({ item }) => <PostItem post={item} />}

@@ -1,4 +1,4 @@
-import SearchInactive from "../../../assets/SearchInactive";
+import SearchInactive from "../../../../assets/SearchInactive";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { TextInput } from "react-native";
@@ -7,7 +7,7 @@ import useAnimatedHeader from "@hooks/useAnimatedHeader";
 import {
   HEADER_HEIGHT,
   InstagramHeaderProps,
-} from "@screens/Home/InstagramHeader";
+} from "@screens/Main/Home/InstagramHeader";
 import { SCREEN_WIDTH } from "@constants/";
 
 const TopBar: React.FC<InstagramHeaderProps> = ({ scrollPosition }) => {

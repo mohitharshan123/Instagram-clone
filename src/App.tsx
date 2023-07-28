@@ -6,17 +6,39 @@
  */
 
 import React from "react";
-import Tabs from "./Tabs";
+import Main from "./screens/Main";
 import { NavigationContainer } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
+import Notifications from "@screens/Notifications";
+import { SCREENS } from "./constants";
+
+const Stack = createStackNavigator();
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <NavigationContainer>
       <QueryClientProvider client={queryClient}>
-        <Tabs />
+        <Stack.Navigator
+          screenOptions={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        >
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name={SCREENS.main}
+            component={Main}
+          />
+          <Stack.Screen
+            name={SCREENS.notifications}
+            component={Notifications}
+          />
+        </Stack.Navigator>
       </QueryClientProvider>
     </NavigationContainer>
   );

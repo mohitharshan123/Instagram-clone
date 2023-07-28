@@ -1,9 +1,15 @@
-import { DropdownIcon, InstagramLogo, Heart, Messenger } from "../../../assets";
+import {
+  DropdownIcon,
+  InstagramLogo,
+  Heart,
+  Messenger,
+} from "../../../../assets";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { View } from "react-native";
 import Animated from "react-native-reanimated";
 import useAnimatedHeader from "@hooks/useAnimatedHeader";
+import { SCREENS } from "@constants";
 
 export const HEADER_HEIGHT = 50;
 
@@ -13,6 +19,7 @@ export type InstagramHeaderProps = {
 
 const InstagramHeader: React.FC<InstagramHeaderProps> = ({
   scrollPosition,
+  navigation,
 }) => {
   const headerStyle = useAnimatedHeader({ scrollPosition });
   return (
@@ -24,8 +31,14 @@ const InstagramHeader: React.FC<InstagramHeaderProps> = ({
         </TouchableOpacity>
       </View>
       <View style={[styles.rightContainer]}>
-        <Heart />
-        <Messenger />
+        <TouchableOpacity
+          onPress={() => navigation.push(SCREENS.notifications)}
+        >
+          <Heart />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Messenger />
+        </TouchableOpacity>
       </View>
     </Animated.View>
   );
