@@ -19,7 +19,7 @@ const Post: React.FC<{ post: PostObject }> = ({ post }) => {
     <View style={styles.container}>
       <Header {...{ username, avatar }} />
       <Image style={styles.image} source={{ uri: imageUrl }} />
-      <Footer />
+      <Footer {...{ post }} />
     </View>
   );
 };

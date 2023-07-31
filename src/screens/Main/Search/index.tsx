@@ -17,7 +17,7 @@ export type ImageObject = {
 };
 
 const Search = () => {
-  const { data: images } = useFetchSearchImages();
+  const { data: images, refetch, isRefetching } = useFetchSearchImages();
 
   const translationY = useSharedValue(0);
 
@@ -58,6 +58,8 @@ const Search = () => {
         bounces={false}
         numColumns={3}
         keyExtractor={item => item.id}
+        onRefresh={refetch}
+        refreshing={isRefetching}
       />
     </Layout>
   );

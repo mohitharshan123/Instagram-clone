@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { PostObject } from ".";
 
-import { HorizontalInfo } from "../../../assets";
+import { HorizontalInfo } from "../../../../../assets";
 
 type HeaderProps = Pick<PostObject, "username" | "avatar">;
 

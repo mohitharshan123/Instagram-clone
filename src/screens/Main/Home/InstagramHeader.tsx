@@ -10,11 +10,14 @@ import { View } from "react-native";
 import Animated from "react-native-reanimated";
 import useAnimatedHeader from "@hooks/useAnimatedHeader";
 import { SCREENS } from "@constants";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "types";
 
 export const HEADER_HEIGHT = 50;
 
 export type InstagramHeaderProps = {
   scrollPosition: Animated.SharedValue<number>;
+  navigation: StackNavigationProp<RootStackParamList>;
 };
 
 const InstagramHeader: React.FC<InstagramHeaderProps> = ({

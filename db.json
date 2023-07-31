@@ -1,0 +1,76 @@
+{
+  "notifications": [
+    {
+      "id": "1",
+      "time": "Yesterday",
+      "is_following": true,
+      "action": "follow_request",
+      "username": "ansar",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/351.jpg"
+    },
+    {
+      "id": "2",
+      "time": "Yesterday",
+      "is_following": false,
+      "action": "follow",
+      "username": "mohit",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/345.jpg"
+    },
+    {
+      "id": "3",
+      "time": "Yesterday",
+      "is_following": true,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/146.jpg"
+    },
+    {
+      "id": "4",
+      "time": "Last 7 days",
+      "is_following": true,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/46.jpg"
+    },
+    {
+      "id": "5",
+      "time": "Yesterday",
+      "is_following": false,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/87.jpg"
+    },
+    {
+      "id": "6",
+      "time": "Last 7 days",
+      "is_following": true,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/102.jpg"
+    },
+    {
+      "id": "7",
+      "time": "Last 7 days",
+      "is_following": false,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/102.jpg"
+    },
+    {
+      "id": "8",
+      "time": "Last 7 days",
+      "is_following": true,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/102.jpg"
+    },
+    {
+      "id": "9",
+      "time": "Last 7 days",
+      "is_following": true,
+      "action": "follow",
+      "username": "cr7",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/102.jpg"
+    }
+  ]
+}

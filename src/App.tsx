@@ -35,6 +35,12 @@ const App = () => {
             component={Main}
           />
           <Stack.Screen
+            options={{
+              headerStyle: {
+                backgroundColor: "black",
+              },
+              headerTintColor: "white",
+            }}
             name={SCREENS.notifications}
             component={Notifications}
           />

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@components/Layout";
-import PostItem from "@components/PostItem";
+import PostItem from "@screens/Main/Home/PostItem";
 import { useFetchPosts } from "@hooks/api/usePostsApi";
 import InstagramHeader, {
   HEADER_HEIGHT,
@@ -12,7 +12,7 @@ import Animated, {
 import { clamp } from "utils";
 
 const Home: React.FC<any> = ({ navigation }) => {
-  const { data: posts } = useFetchPosts();
+  const { data: posts, refetch, isRefetching } = useFetchPosts();
 
   const translationY = useSharedValue(0);
 
@@ -29,7 +29,7 @@ const Home: React.FC<any> = ({ navigation }) => {
 
   return (
     <Layout>
-      <InstagramHeader scrollPosition={translationY} navigation={navigation}/>
+      <InstagramHeader scrollPosition={translationY} navigation={navigation} />
       <Animated.FlatList
         data={posts}
         renderItem={({ item }) => <PostItem post={item} />}
@@ -41,6 +41,8 @@ const Home: React.FC<any> = ({ navigation }) => {
         progressViewOffset={HEADER_HEIGHT}
         keyExtractor={item => item.id}
         bounces={false}
+        refreshing={isRefetching}
+        onRefresh={refetch}
       />
     </Layout>
   );

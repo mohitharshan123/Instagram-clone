@@ -11,7 +11,7 @@ import { ViewStyle } from "react-native/types";
 
 const useAnimatedHeader = ({
   scrollPosition,
-}: InstagramHeaderProps): ViewStyle => {
+}: Pick<InstagramHeaderProps, "scrollPosition">): ViewStyle => {
   const headerStyle = useAnimatedStyle(() => {
     const opacity = interpolate(
       scrollPosition.value,
