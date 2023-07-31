@@ -14,7 +14,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "types";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-export const HEADER_HEIGHT = 50;
+export const HEADER_HEIGHT = 60;
 
 export type InstagramHeaderProps = {
   scrollPosition: Animated.SharedValue<number>;
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     height: HEADER_HEIGHT,
-    backgroundColor: "black",
+    backgroundColor: "#2c2c2c",
   },
   leftContainer: {
     display: "flex",
