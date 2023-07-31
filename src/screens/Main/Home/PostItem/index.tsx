@@ -10,6 +10,7 @@ export type PostObject = {
   avatar: string;
   caption: string;
   likes: number;
+  isLiked?: boolean;
 };
 
 const Post: React.FC<{ post: PostObject }> = ({ post }) => {

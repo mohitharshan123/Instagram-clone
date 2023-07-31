@@ -12,6 +12,7 @@ import useAnimatedHeader from "@hooks/useAnimatedHeader";
 import { SCREENS } from "@constants";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "types";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 export const HEADER_HEIGHT = 50;
 
@@ -37,7 +38,7 @@ const InstagramHeader: React.FC<InstagramHeaderProps> = ({
         <TouchableOpacity
           onPress={() => navigation.push(SCREENS.notifications)}
         >
-          <Heart />
+          <AntDesign name="hearto" style={styles.notificationIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
           <Messenger />
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   rightContainer: { display: "flex", flexDirection: "row", gap: 30 },
+  notificationIcon: { color: "white", fontSize: 24 },
 });
 
 export default InstagramHeader;

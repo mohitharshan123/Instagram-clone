@@ -1,17 +1,25 @@
-import { Heart, Comment, Share, Save } from "../../../../../assets";
-import React from "react";
+import { Comment, Share, Save } from "../../../../../assets";
+import React, { useState } from "react";
+import AntDesign from "react-native-vector-icons/AntDesign";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { PostObject } from ".";
 
 const Footer: React.FC<{ post: PostObject }> = ({ post }) => {
   const { likes, caption, username } = post;
+  const [isLiked, setIsLiked] = useState<boolean>(post.isLiked ?? false);
 
   return (
     <View style={styles.verticalContainer}>
       <View style={[styles.mainContainer, styles.container]}>
         <View style={styles.mainContainer}>
-          <TouchableOpacity activeOpacity={0.8}>
-            <Heart />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => setIsLiked(isLiked => !isLiked)}
+          >
+            <AntDesign
+              name={isLiked ? "heart" : "hearto"}
+              style={[styles.heartIcon, { color: isLiked ? "red" : "white" }]}
+            />
           </TouchableOpacity>
           <TouchableOpacity activeOpacity={0.8}>
             <Comment />
@@ -37,6 +45,7 @@ const Footer: React.FC<{ post: PostObject }> = ({ post }) => {
 
 const styles = StyleSheet.create({
   verticalContainer: { display: "flex", flexDirection: "column" },
+  heartIcon: { fontSize: 24 },
   mainContainer: {
     display: "flex",
     flexDirection: "row",
