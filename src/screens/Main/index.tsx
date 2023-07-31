@@ -24,7 +24,7 @@ const Tabs: React.FC<any> = () => {
         tabBarActiveBackgroundColor: "black",
         tabBarInactiveBackgroundColor: "black",
         headerShown: false,
-        // tabBarStyle: { height: TAB_BAR_HEIGHT },
+        unmountOnBlur: true,
       }}
     >
       <Tab.Screen
