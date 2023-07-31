@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Image } from "react-native";
 import { Notification } from ".";
@@ -11,6 +11,9 @@ const MESSAGE_TYPES: { follow_request: string; follow: string } = {
 const NotificationItem: React.FC<{
   notification: Omit<Notification, "time">;
 }> = ({ notification }) => {
+  const [isFollowing, setIsFollowing] = useState<boolean>(
+    notification.is_following
+  );
   return (
     <View style={styles.container}>
       <Image source={{ uri: notification.avatar }} style={styles.avatar} />
@@ -19,15 +22,16 @@ const NotificationItem: React.FC<{
         {MESSAGE_TYPES[notification.action]}
       </Text>
       <TouchableOpacity
+        onPress={() => setIsFollowing(isFollowing => !isFollowing)}
         style={
-          notification.is_following
+          isFollowing
             ? [styles.followButton, styles.followButtonSecondary]
             : [styles.followButton, styles.followButtonPrimary]
         }
         activeOpacity={0.8}
       >
         <Text style={styles.followText}>
-          {notification.is_following ? "Following" : "Follow"}
+          {isFollowing ? "Following" : "Follow"}
         </Text>
       </TouchableOpacity>
     </View>
