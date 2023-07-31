@@ -15,6 +15,8 @@ import {
 
 const Tab = createBottomTabNavigator();
 
+export const TAB_BAR_HEIGHT = 50;
+
 const Tabs: React.FC<any> = () => {
   return (
     <Tab.Navigator
@@ -22,6 +24,7 @@ const Tabs: React.FC<any> = () => {
         tabBarActiveBackgroundColor: "black",
         tabBarInactiveBackgroundColor: "black",
         headerShown: false,
+        // tabBarStyle: { height: TAB_BAR_HEIGHT },
       }}
     >
       <Tab.Screen

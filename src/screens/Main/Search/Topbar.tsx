@@ -2,15 +2,14 @@ import SearchInactive from "../../../../assets/SearchInactive";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { TextInput } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { SharedValue } from "react-native-reanimated";
 import useAnimatedHeader from "@hooks/useAnimatedHeader";
-import {
-  HEADER_HEIGHT,
-  InstagramHeaderProps,
-} from "@screens/Main/Home/InstagramHeader";
+import { HEADER_HEIGHT } from "@screens/Main/Home/InstagramHeader";
 import { SCREEN_WIDTH } from "@constants/";
 
-const TopBar: React.FC<InstagramHeaderProps> = ({ scrollPosition }) => {
+const TopBar: React.FC<{ scrollPosition: SharedValue<number> }> = ({
+  scrollPosition,
+}) => {
   const headerStyle = useAnimatedHeader({ scrollPosition });
 
   return (
