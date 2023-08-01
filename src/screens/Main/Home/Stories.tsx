@@ -6,11 +6,12 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  Text,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Ionicon from "react-native-vector-icons/Ionicons";
 
-export type Story = { id: string; avatar: string };
+export type Story = { id: string; avatar: string; username: string };
 
 const Stories: React.FC<any> = () => {
   const { data: stories, isLoading } = useFetchStories();
@@ -21,15 +22,20 @@ const Stories: React.FC<any> = () => {
       data={stories}
       contentContainerStyle={styles.container}
       renderItem={({ item }: { item: Story }) => (
-        <TouchableOpacity style={styles.storyContainer} activeOpacity={0.8}>
-          <LinearGradient
-            colors={["#C913B9", "#F9373F", "#FECD00"]}
-            style={styles.gradient}
-          />
-          <View style={styles.storyAvatarContainer}>
-            <Image style={styles.storyAvatar} source={{ uri: item.avatar }} />
+        <View style={styles.storyUsernameContainer}>
+          <TouchableOpacity style={styles.storyContainer} activeOpacity={0.8}>
+            <LinearGradient
+              colors={["#C913B9", "#F9373F", "#FECD00"]}
+              style={styles.gradient}
+            />
+            <View style={styles.storyAvatarContainer}>
+              <Image style={styles.storyAvatar} source={{ uri: item.avatar }} />
+            </View>
+          </TouchableOpacity>
+          <View style={styles.usernameContainer}>
+            <Text style={styles.username}>{item.username}</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       )}
       keyExtractor={item => item.id}
       bounces={false}
@@ -48,6 +54,11 @@ const Stories: React.FC<any> = () => {
           <TouchableOpacity style={styles.addIconContainer} activeOpacity={0.8}>
             <Ionicon name="add-outline" style={styles.addIcon} />
           </TouchableOpacity>
+          <View style={styles.usernameContainer}>
+            <Text style={[styles.username, { marginTop: 5.5 }]}>
+              mohit_harsh
+            </Text>
+          </View>
         </TouchableOpacity>
       )}
     />
@@ -58,6 +69,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
+  username: { color: "white", fontSize: 11 },
+  storyUsernameContainer: { display: "flex", flexDirection: "column", gap: 4 },
   storyContainer: {
     marginRight: 16,
     alignItems: "center",
@@ -104,6 +117,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 10,
   },
+  usernameContainer: { alignItems: "center", width: 72 },
 });
 
 export default Stories;
