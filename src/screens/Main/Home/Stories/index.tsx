@@ -99,14 +99,14 @@ const styles = StyleSheet.create({
   },
   userAvatarContainer: {
     position: "relative",
-    marginRight: 26,
-    borderRadius: 36,
-    height: 72,
-    width: 72,
+    marginRight: 15,
+    borderRadius: 44,
+    height: 88,
+    width: 88,
   },
   addIconContainer: {
     position: "absolute",
-    bottom: -0.5,
+    bottom: 2,
     right: 4,
     backgroundColor: "#1FA1FF",
     borderRadius: 20,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   addIcon: {
     color: "white",
-    fontSize: 10,
+    fontSize: 15,
   },
   usernameContainer: { alignItems: "center", width: 72 },
 });
