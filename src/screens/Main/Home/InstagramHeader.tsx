@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     height: HEADER_HEIGHT,
-    backgroundColor: "#2c2c2c",
+    backgroundColor: "#161616",
   },
   leftContainer: {
     display: "flex",
