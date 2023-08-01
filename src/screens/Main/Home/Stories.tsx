@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Ionicon from "react-native-vector-icons/Ionicons";
+import RNBounceable from "@freakycoder/react-native-bounceable";
 
 export type Story = { id: string; avatar: string; username: string };
 
@@ -22,8 +23,8 @@ const Stories: React.FC<any> = () => {
       data={stories}
       contentContainerStyle={styles.container}
       renderItem={({ item }: { item: Story }) => (
-        <View style={styles.storyUsernameContainer}>
-          <TouchableOpacity style={styles.storyContainer} activeOpacity={0.8}>
+        <RNBounceable style={styles.storyUsernameContainer}>
+          <View style={styles.storyContainer}>
             <LinearGradient
               colors={["#C913B9", "#F9373F", "#FECD00"]}
               style={styles.gradient}
@@ -31,20 +32,17 @@ const Stories: React.FC<any> = () => {
             <View style={styles.storyAvatarContainer}>
               <Image style={styles.storyAvatar} source={{ uri: item.avatar }} />
             </View>
-          </TouchableOpacity>
+          </View>
           <View style={styles.usernameContainer}>
             <Text style={styles.username}>{item.username}</Text>
           </View>
-        </View>
+        </RNBounceable>
       )}
       keyExtractor={item => item.id}
       bounces={false}
       horizontal
       ListHeaderComponent={() => (
-        <TouchableOpacity
-          style={styles.userAvatarContainer}
-          activeOpacity={0.8}
-        >
+        <RNBounceable style={styles.userAvatarContainer}>
           <View style={styles.storyAvatarContainer}>
             <Image
               style={styles.storyAvatar}
@@ -59,7 +57,7 @@ const Stories: React.FC<any> = () => {
               mohit_harsh
             </Text>
           </View>
-        </TouchableOpacity>
+        </RNBounceable>
       )}
     />
   );
@@ -80,19 +78,20 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   storyAvatarContainer: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
+    width: 78,
+    height: 78,
+    borderRadius: 39,
     overflow: "hidden",
     borderWidth: 2,
     borderColor: "transparent",
   },
   storyAvatar: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 32,
+    width: 75,
+    height: 73,
+    borderRadius: 39,
     borderColor: "black",
     borderWidth: 3,
+    objectFit: "cover",
   },
   gradient: {
     ...StyleSheet.absoluteFillObject,

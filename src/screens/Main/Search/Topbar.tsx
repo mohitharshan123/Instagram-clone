@@ -6,6 +6,7 @@ import Animated, { SharedValue } from "react-native-reanimated";
 import useAnimatedHeader from "@hooks/useAnimatedHeader";
 import { HEADER_HEIGHT } from "@screens/Main/Home/InstagramHeader";
 import { SCREEN_WIDTH } from "@constants/";
+import IonIcon from "react-native-vector-icons/Ionicons";
 
 const TopBar: React.FC<{ scrollPosition: SharedValue<number> }> = ({
   scrollPosition,
@@ -14,8 +15,13 @@ const TopBar: React.FC<{ scrollPosition: SharedValue<number> }> = ({
 
   return (
     <Animated.View style={[styles.container, headerStyle]}>
-      <TextInput style={styles.search} />
-      <SearchInactive style={styles.searchIcon} />
+      <TextInput
+        style={styles.search}
+        placeholder="Search"
+        placeholderTextColor="#cacaca"
+      />
+      <IonIcon name="search-outline" style={styles.searchIcon} />
+      <IonIcon name="location-outline" style={styles.locationIcon} />
     </Animated.View>
   );
 };
@@ -29,19 +35,33 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: HEADER_HEIGHT + 5,
+    height: HEADER_HEIGHT - 5,
     backgroundColor: "black",
   },
   search: {
     backgroundColor: "rgba(239, 239, 239, 0.20);",
-    borderRadius: 5,
+    borderRadius: 10,
     color: "white",
     paddingLeft: 50,
-    width: SCREEN_WIDTH - 20,
+    width: SCREEN_WIDTH - 55,
+    alignSelf: "flex-start",
     margin: 10,
     height: 35,
   },
-  searchIcon: { position: "absolute", top: 15, left: 25, height: 5, width: 5 },
+  searchIcon: {
+    position: "absolute",
+    top: 15,
+    left: 25,
+    fontSize: 22,
+    color: "white",
+  },
+  locationIcon: {
+    position: "absolute",
+    top: 13,
+    right: 10,
+    fontSize: 28,
+    color: "white",
+  },
 });
 
 export default TopBar;

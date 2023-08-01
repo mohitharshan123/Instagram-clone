@@ -38,6 +38,7 @@ const Footer: React.FC<{ post: PostObject }> = ({ post }) => {
           <Text style={styles.boldText}>{username}</Text>
           <Text style={styles.caption}>{caption}</Text>
         </View>
+        <Text style={styles.timeAgo}>1 hr ago</Text>
       </View>
     </View>
   );
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingHorizontal: 5,
   },
+  timeAgo: { fontSize: 10, color: "#cacaca", marginTop: 4 },
   container: {
     justifyContent: "space-between",
   },
