@@ -39,10 +39,6 @@ const Stories: React.FC<any> = () => {
           style={styles.userAvatarContainer}
           activeOpacity={0.8}
         >
-          <LinearGradient
-            colors={["#C913B9", "#F9373F", "#FECD00"]}
-            style={styles.gradient}
-          />
           <View style={styles.storyAvatarContainer}>
             <Image
               style={styles.storyAvatar}
@@ -92,12 +88,14 @@ const styles = StyleSheet.create({
   userAvatarContainer: {
     position: "relative",
     marginRight: 15,
-    borderRadius: 40,
+    borderRadius: 36,
+    height: 72,
+    width: 72,
   },
   addIconContainer: {
     position: "absolute",
-    bottom: -1,
-    right: -1,
+    bottom: -0.5,
+    right: 4,
     backgroundColor: "#1FA1FF",
     borderRadius: 20,
     padding: 4,
