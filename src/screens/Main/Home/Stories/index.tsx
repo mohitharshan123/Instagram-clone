@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 15,
   },
-  usernameContainer: { alignItems: "center", width: 72 },
+  usernameContainer: { alignItems: "center", width: 88 },
 });
 
 export default Stories;
