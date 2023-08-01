@@ -35,7 +35,10 @@ const Stories: React.FC<any> = () => {
       bounces={false}
       horizontal
       ListHeaderComponent={() => (
-        <View style={styles.userAvatarContainer}>
+        <TouchableOpacity
+          style={styles.userAvatarContainer}
+          activeOpacity={0.8}
+        >
           <LinearGradient
             colors={["#C913B9", "#F9373F", "#FECD00"]}
             style={styles.gradient}
@@ -49,7 +52,7 @@ const Stories: React.FC<any> = () => {
           <TouchableOpacity style={styles.addIconContainer} activeOpacity={0.8}>
             <Ionicon name="add-outline" style={styles.addIcon} />
           </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
       )}
     />
   );
@@ -68,9 +71,9 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   storyAvatarContainer: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 72,
+    height: 72,
+    borderRadius: 36,
     overflow: "hidden",
     borderWidth: 2,
     borderColor: "transparent",
@@ -79,6 +82,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 32,
+    borderColor: "black",
+    borderWidth: 3,
   },
   gradient: {
     ...StyleSheet.absoluteFillObject,
@@ -87,6 +92,7 @@ const styles = StyleSheet.create({
   userAvatarContainer: {
     position: "relative",
     marginRight: 15,
+    borderRadius: 40,
   },
   addIconContainer: {
     position: "absolute",

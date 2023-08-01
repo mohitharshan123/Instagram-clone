@@ -23,6 +23,7 @@ const Reel: React.FC<ReelProps> = ({ item, index, currentIndex }) => {
 
   const [isMute, setIsMute] = useState<boolean>(false);
   const [isLiked, setIsLiked] = useState<boolean>(item.isLiked);
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
 
   return (
     <View style={styles.container}>
@@ -50,7 +51,7 @@ const Reel: React.FC<ReelProps> = ({ item, index, currentIndex }) => {
       />
       <View style={styles.rightContainer}>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.9}>
             <View style={styles.rightAvatarContainer}>
               <View style={styles.leftAvatarContainer}>
                 <Image
@@ -59,15 +60,25 @@ const Reel: React.FC<ReelProps> = ({ item, index, currentIndex }) => {
                 />
               </View>
               <Text style={styles.username}>{item.username}</Text>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setIsFollowing(isFollowing => !isFollowing)}
+              >
+                <Text style={styles.followButton}>
+                  {isFollowing ? "Following" : "Follow"}
+                </Text>
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
           <Text style={styles.caption}>{item.caption}</Text>
-          <View style={{ flexDirection: "row", padding: 10 }}>
+          <View style={styles.audioContainer}>
             <Ionic
-              name="musical-note"
+              name="musical-notes-outline"
               style={[styles.icon, styles.iconSmall]}
             />
-            <Text style={styles.colorWhite}>Original Audio</Text>
+            <Text style={[styles.colorWhite, { fontSize: 10 }]}>
+              Original Audio
+            </Text>
           </View>
         </View>
       </View>
@@ -118,7 +129,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   icon: { color: "white", fontSize: 25 },
-  iconSmall: { fontSize: 16 },
+  iconSmall: { fontSize: 12, marginRight: 8 },
   avatarRightContainer: {
     width: 30,
     height: 30,
@@ -163,6 +174,28 @@ const styles = StyleSheet.create({
     width: 100,
     flexDirection: "row",
     alignItems: "center",
+  },
+  audioContainer: {
+    flexDirection: "row",
+    paddingVertical: 4,
+    paddingHorizontal: 13,
+    margin: 10,
+    backgroundColor: "rgba(84, 84, 84, 0.7)",
+    alignItems: "center",
+    justifyContent: "center",
+    maxWidth: "auto",
+    borderRadius: 20,
+    alignSelf: "flex-start",
+  },
+  followButton: {
+    color: "white",
+    fontSize: 12,
+    borderColor: "white",
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    marginLeft: 10,
+    paddingVertical: 2,
+    borderRadius: 5,
   },
 });
 
