@@ -1,34 +1,34 @@
 import * as React from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  SafeAreaView,
-  TextInput,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, Image, TextInput, Text } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
+import AntIcon from "react-native-vector-icons/AntDesign";
+
 import { PostObject } from "../PostItem";
 
 const Story: React.FC<{ story: PostObject }> = ({ story }) => {
   const { imageUrl, username, avatar } = story;
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <View style={styles.container}>
         <Image style={styles.image} source={{ uri: imageUrl }} />
-        <Image
-          style={{ borderRadius: 40 }}
-          width={80}
-          height={80}
-          source={{ uri: avatar }}
-        />
+        <View style={styles.userInfo}>
+          <View style={styles.avatarContainer}>
+            <Image style={styles.avatar} source={{ uri: avatar }} />
+          </View>
+          <Text style={styles.username}>{username}</Text>
+        </View>
       </View>
       <View style={styles.footer}>
-        <IonIcon name="camera-outline" color="white" size={28} />
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          placeholder="Send a message"
+          placeholderTextColor="white"
+          selectionColor="white"
+        />
+        <AntIcon name="hearto" color="white" size={28} />
         <IonIcon name="send-outline" color="white" size={28} />
       </View>
-    </SafeAreaView>
+    </>
   );
 };
 export default Story;
@@ -38,22 +38,45 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    ...StyleSheet.absoluteFillObject,
-    width: null,
-    height: null,
-    borderRadius: 5,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  userInfo: {
+    position: "absolute",
+    top: 16,
+    left: 16,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  avatarContainer: {
+    position: "relative",
+    marginRight: 12,
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  username: {
+    fontWeight: "bold",
+    fontSize: 12,
+    color: "white",
   },
   footer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 16,
+    padding: 8,
+    gap: 15,
   },
   input: {
-    borderWidth: 2,
+    flex: 1,
+    color: "white",
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 7,
+    paddingHorizontal: 15,
     borderColor: "white",
-    height: 28,
-    width: 250,
-    borderRadius: Platform.OS === "android" ? 0 : 10,
   },
 });
