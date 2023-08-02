@@ -16,6 +16,7 @@ import {
 } from "@react-navigation/stack";
 import Notifications from "@screens/Notifications";
 import { SCREENS } from "./constants";
+import Stories from "@screens/Main/Home/Stories";
 
 const Stack = createStackNavigator();
 const queryClient = new QueryClient();
@@ -43,6 +44,11 @@ const App = () => {
             }}
             name={SCREENS.notifications}
             component={Notifications}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name={SCREENS.stories}
+            component={Stories}
           />
         </Stack.Navigator>
       </QueryClientProvider>

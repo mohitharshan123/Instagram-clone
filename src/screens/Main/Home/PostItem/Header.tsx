@@ -6,6 +6,7 @@ import { HorizontalInfo } from "../../../../../assets";
 
 type HeaderProps = Pick<PostObject, "username" | "avatar">;
 
+export const VALIDATION_SCHEMA = false;
 const Header: React.FC<HeaderProps> = ({ username, avatar }) => {
   return (
     <View style={styles.container}>

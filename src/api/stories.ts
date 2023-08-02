@@ -1,4 +1,4 @@
-import { Story } from "@screens/Main/Home/Stories";
+import { Story } from "@screens/Main/Home/Stories/AvatarList";
 import axios from "axios";
 import { JSON_SERVER_BASE_URL } from ".";
 

@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { clamp } from "utils";
-import Stories from "./Stories";
+import Stories from "./Stories/AvatarList";
 
 const Home: React.FC<any> = ({ navigation }) => {
   const { data: posts, refetch, isRefetching } = useFetchPosts();
@@ -44,7 +44,7 @@ const Home: React.FC<any> = ({ navigation }) => {
         bounces={false}
         refreshing={isRefetching}
         onRefresh={refetch}
-        ListHeaderComponent={() => <Stories />}
+        ListHeaderComponent={() => <Stories navigation={navigation} />}
       />
     </Layout>
   );

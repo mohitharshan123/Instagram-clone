@@ -16,6 +16,8 @@ export type ImageObject = {
   url: string;
 };
 
+export const VALIDATION_SCHEMA = false;
+
 const Search = () => {
   const { data: images, refetch, isRefetching } = useFetchSearchImages();
 

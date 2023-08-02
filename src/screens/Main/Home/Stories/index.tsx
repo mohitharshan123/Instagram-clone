@@ -1,122 +1,101 @@
-import { useFetchStories } from "@hooks/api/useStoriesApi";
-import React from "react";
-import {
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  View,
-  Text,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import Ionicon from "react-native-vector-icons/Ionicons";
-import RNBounceable from "@freakycoder/react-native-bounceable";
+import Layout from "@components/Layout";
+import * as React from "react";
+import { createRef, RefObject, useEffect } from "react";
+import { StyleSheet, Animated, Dimensions, Platform, View } from "react-native";
 
-export type Story = { id: string; avatar: string; username: string };
+import Story from "./item";
 
-const Stories: React.FC<any> = () => {
-  const { data: stories, isLoading } = useFetchStories();
-  if (isLoading) return null;
+import { PostObject } from "../PostItem";
+import { useFetchPosts } from "@hooks/api/usePostsApi";
+
+const { width } = Dimensions.get("window");
+const perspective = width;
+const angle = Math.atan(perspective / (width / 2));
+const ratio = Platform.OS === "ios" ? 2 : 1.2;
+
+const Stories: React.FC<{ stories: Array<PostObject> }> = () => {
+  const { data: stories } = useFetchPosts();
+  const x = new Animated.Value(0);
+  const storiesRef = stories?.map(createRef);
+
+  useEffect(() => {
+    x.addListener(() =>
+      storiesRef?.forEach((story: RefObject<any>, index: number) => {
+        const offset = index * width;
+        const inputRange = [offset - width, offset + width];
+        const translateX = x
+          .interpolate({
+            inputRange,
+            outputRange: [width / ratio, -width / ratio],
+            extrapolate: "clamp",
+          })
+          .__getValue();
+
+        const rotateY = x
+          .interpolate({
+            inputRange,
+            outputRange: [`${angle}rad`, `-${angle}rad`],
+            extrapolate: "clamp",
+          })
+          .__getValue();
+
+        const parsed = parseFloat(
+          rotateY.substr(0, rotateY.indexOf("rad")),
+          10
+        );
+        const alpha = Math.abs(parsed);
+        const gamma = angle - alpha;
+        const beta = Math.PI - alpha - gamma;
+        const w = width / 2 - ((width / 2) * Math.sin(gamma)) / Math.sin(beta);
+        const translateX2 = parsed > 0 ? w : -w;
+
+        const style = {
+          transform: [
+            { perspective },
+            { translateX },
+            { rotateY },
+            { translateX: translateX2 },
+          ],
+        };
+        story.current?.setNativeProps({ style });
+      })
+    );
+  }, [x, stories]);
 
   return (
-    <FlatList
-      data={stories}
-      contentContainerStyle={styles.container}
-      renderItem={({ item }: { item: Story }) => (
-        <RNBounceable style={styles.storyUsernameContainer}>
-          <View style={styles.storyContainer}>
-            <LinearGradient
-              colors={["#C913B9", "#F9373F", "#FECD00"]}
-              style={styles.gradient}
-            />
-            <View style={styles.storyAvatarContainer}>
-              <Image style={styles.storyAvatar} source={{ uri: item.avatar }} />
-            </View>
-          </View>
-          <View style={styles.usernameContainer}>
-            <Text style={styles.username}>{item.username}</Text>
-          </View>
-        </RNBounceable>
-      )}
-      keyExtractor={item => item.id}
-      bounces={false}
-      horizontal
-      ListHeaderComponent={() => (
-        <RNBounceable style={styles.userAvatarContainer}>
-          <View style={styles.storyAvatarContainer}>
-            <Image
-              style={styles.storyAvatar}
-              source={{ uri: stories[0]?.avatar }}
-            />
-          </View>
-          <TouchableOpacity style={styles.addIconContainer} activeOpacity={0.8}>
-            <Ionicon name="add-outline" style={styles.addIcon} />
-          </TouchableOpacity>
-          <View style={styles.usernameContainer}>
-            <Text style={[styles.username, { marginTop: 5.5 }]}>
-              mohit_harsh
-            </Text>
-          </View>
-        </RNBounceable>
-      )}
-    />
+    <Layout>
+      {stories
+        .map((story: PostObject, i: number) => (
+          <Animated.View
+            ref={storiesRef[i]}
+            style={StyleSheet.absoluteFill}
+            key={story.id}
+          >
+            <Story {...{ story }} />
+          </Animated.View>
+        ))
+        .reverse()}
+      <Animated.ScrollView
+        style={StyleSheet.absoluteFillObject}
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        snapToInterval={width}
+        contentContainerStyle={{ width: width * stories.length }}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: { x },
+              },
+            },
+          ],
+          { useNativeDriver: true }
+        )}
+        decelerationRate={0.99}
+        horizontal
+      />
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-  username: { color: "white", fontSize: 11 },
-  storyUsernameContainer: { display: "flex", flexDirection: "column", gap: 4 },
-  storyContainer: {
-    marginRight: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 50,
-    overflow: "hidden",
-    position: "relative",
-  },
-  storyAvatarContainer: {
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    overflow: "hidden",
-    borderWidth: 2,
-    borderColor: "transparent",
-  },
-  storyAvatar: {
-    width: 84,
-    height: 84,
-    borderRadius: 42,
-    borderColor: "black",
-    borderWidth: 3,
-    objectFit: "cover",
-  },
-  gradient: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 32,
-  },
-  userAvatarContainer: {
-    position: "relative",
-    marginRight: 15,
-    borderRadius: 44,
-    height: 88,
-    width: 88,
-  },
-  addIconContainer: {
-    position: "absolute",
-    bottom: 2,
-    right: 4,
-    backgroundColor: "#1FA1FF",
-    borderRadius: 20,
-    padding: 4,
-  },
-  addIcon: {
-    color: "white",
-    fontSize: 15,
-  },
-  usernameContainer: { alignItems: "center", width: 88 },
-});
 
 export default Stories;

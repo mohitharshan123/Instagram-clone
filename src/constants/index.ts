@@ -6,4 +6,5 @@ export const SCREEN_HEIGHT = Dimensions.get("window").height;
 export const SCREENS = {
   main: "Main",
   notifications: "Notifications",
+  stories: "Stories",
 };
