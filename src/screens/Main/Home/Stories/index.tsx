@@ -8,9 +8,10 @@ import Story from "./item";
 import { PostObject } from "../PostItem";
 import { useFetchPosts } from "@hooks/api/usePostsApi";
 import useStoryAnimation from "./useStoryAnimation";
-import { SCREEN_WIDTH } from "@constants/";
+import { useWindowDimensions } from "react-native";
 
 const Stories: React.FC<{ stories: Array<PostObject> }> = () => {
+  const { width: SCREEN_WIDTH } = useWindowDimensions();
   const { data: stories } = useFetchPosts();
   const storiesRef = useMemo(() => stories?.map(createRef), [stories]);
 

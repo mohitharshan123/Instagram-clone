@@ -1,11 +1,8 @@
-import { SCREEN_WIDTH } from "@constants/";
 import { RefObject } from "react";
 import { useEffect } from "react";
-import { PostObject } from "../PostItem";
+import { useWindowDimensions } from "react-native";
 
-const angle = Math.atan(SCREEN_WIDTH / (SCREEN_WIDTH / 2));
-const perspective = SCREEN_WIDTH;
-const ratio = 1.2;
+import { PostObject } from "../PostItem";
 
 const useStoryAnimation = ({
   x,
@@ -16,6 +13,11 @@ const useStoryAnimation = ({
   stories: PostObject[];
   storiesRef: RefObject<PostObject>[];
 }) => {
+  const { width: SCREEN_WIDTH } = useWindowDimensions();
+
+  const angle = Math.atan(SCREEN_WIDTH / (SCREEN_WIDTH / 2));
+  const perspective = SCREEN_WIDTH;
+  const ratio = 1.2;
   useEffect(() => {
     x.addListener(() =>
       storiesRef?.forEach((story: RefObject<any>, index: number) => {
