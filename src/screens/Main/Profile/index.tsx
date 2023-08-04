@@ -1,11 +1,16 @@
 import React from "react";
 import { Text, View } from "react-native";
-import Layout from "../../components/Layout";
+
+import Header from "./Header";
+import Info from "./Info";
+
+import Layout from "../../../components/Layout";
 
 const Profile = () => {
   return (
     <Layout>
-      <Text>Profile</Text>
+      <Header />
+      <Info />
     </Layout>
   );
 };

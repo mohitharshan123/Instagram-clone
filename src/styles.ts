@@ -10,7 +10,6 @@ export const GLOBAL_STYLES = StyleSheet.create({
         fontSize: 12,
         fontStyle: "normal",
         fontWeight: "700",
-        lineHeight: 16,
       },
       light: { color: "white", fontSize: 11 },
     },
