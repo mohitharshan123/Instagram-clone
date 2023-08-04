@@ -14,6 +14,7 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 import { SCREENS } from "@constants/";
 import { RootStackParamList } from "types";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { GLOBAL_STYLES } from "styles";
 
 export type Story = { id: string; avatar: string; username: string };
 
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
-  username: { color: "white", fontSize: 11 },
+  username: GLOBAL_STYLES.dark.username.light,
   storyUsernameContainer: { display: "flex", flexDirection: "column", gap: 4 },
   storyContainer: {
     marginRight: 16,

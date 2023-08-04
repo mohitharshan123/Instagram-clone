@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Image } from "react-native";
+import { GLOBAL_STYLES } from "styles";
 import { Notification } from ".";
 
 const MESSAGE_TYPES: { follow_request: string; follow: string } = {
@@ -52,7 +53,11 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
   },
-  username: { fontWeight: "bold", color: "white", marginLeft: 10 },
+  username: {
+    ...GLOBAL_STYLES.dark.username.bold,
+    marginLeft: 8,
+    fontSize: 14,
+  },
   followButton: {
     paddingHorizontal: 15,
     paddingVertical: 7,

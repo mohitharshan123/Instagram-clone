@@ -3,6 +3,7 @@ import React from "react";
 import { PropsWithChildren } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+import { GLOBAL_STYLES } from "styles";
 
 import { TAB_BAR_HEIGHT } from "..";
 import ReelsComponent from "./Content";
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     position: "relative",
-    backgroundColor: "black",
+    backgroundColor: GLOBAL_STYLES.dark.backgroundColor,
     bottom: TAB_BAR_HEIGHT,
   },
   containerSecondary: {

@@ -1,10 +1,18 @@
 import React, { useRef, useState } from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import Video from "react-native-video";
 import Ionic from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from "@constants/";
+import { GLOBAL_STYLES } from "styles";
 
 type ReelObject = {
   id: number;
@@ -168,7 +176,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(52,52,52,0.6)",
     borderRadius: 100,
   },
-  username: { color: "white", fontSize: 14, fontWeight: "bold" },
+  username: { ...GLOBAL_STYLES.dark.username.bold, fontSize: 14 } as ViewStyle,
   caption: { color: "white", fontSize: 14, marginHorizontal: 10 },
   rightAvatarContainer: {
     width: 100,

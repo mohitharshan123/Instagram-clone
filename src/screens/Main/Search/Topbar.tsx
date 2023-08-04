@@ -7,6 +7,7 @@ import useAnimatedHeader from "@hooks/useAnimatedHeader";
 import { HEADER_HEIGHT } from "@screens/Main/Home/InstagramHeader";
 import { SCREEN_WIDTH } from "@constants/";
 import IonIcon from "react-native-vector-icons/Ionicons";
+import { GLOBAL_STYLES } from "styles";
 
 const TopBar: React.FC<{ scrollPosition: SharedValue<number> }> = ({
   scrollPosition,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     height: HEADER_HEIGHT - 5,
-    backgroundColor: "black",
+    backgroundColor: GLOBAL_STYLES.dark.backgroundColor,
   },
   search: {
     backgroundColor: "rgba(239, 239, 239, 0.20);",

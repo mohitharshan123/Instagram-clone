@@ -12,6 +12,7 @@ import {
   SearchActive,
   SearchInactive,
 } from "../../../assets";
+import { GLOBAL_STYLES } from "styles";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,8 +22,8 @@ const Tabs: React.FC<any> = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveBackgroundColor: "black",
-        tabBarInactiveBackgroundColor: "black",
+        tabBarActiveBackgroundColor: GLOBAL_STYLES.dark.backgroundColor,
+        tabBarInactiveBackgroundColor: GLOBAL_STYLES.dark.backgroundColor,
         headerShown: false,
         unmountOnBlur: true,
       }}

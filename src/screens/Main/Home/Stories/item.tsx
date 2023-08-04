@@ -4,6 +4,9 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 import AntIcon from "react-native-vector-icons/AntDesign";
 
 import { PostObject } from "../PostItem";
+import { formatUsername } from "utils";
+import { GLOBAL_STYLES } from "styles";
+import { ViewStyle } from "react-native";
 
 const Story: React.FC<{ story: PostObject }> = ({ story }) => {
   const { imageUrl, username, avatar } = story;
@@ -15,7 +18,7 @@ const Story: React.FC<{ story: PostObject }> = ({ story }) => {
           <View style={styles.avatarContainer}>
             <Image style={styles.avatar} source={{ uri: avatar }} />
           </View>
-          <Text style={styles.username}>{username}</Text>
+          <Text style={styles.username}>{formatUsername(username)}</Text>
         </View>
       </View>
       <View style={styles.footer}>
@@ -58,11 +61,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
   },
-  username: {
-    fontWeight: "bold",
-    fontSize: 12,
-    color: "white",
-  },
+  username: GLOBAL_STYLES.dark.username.bold as ViewStyle,
   footer: {
     flexDirection: "row",
     alignItems: "center",

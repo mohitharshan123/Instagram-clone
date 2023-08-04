@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+import { formatUsername } from "utils";
 import Footer from "./Footer.";
 import Header from "./Header";
 
@@ -19,7 +20,7 @@ const Post: React.FC<{ post: PostObject }> = ({ post }) => {
 
   return (
     <View style={styles.container}>
-      <Header {...{ username, avatar }} />
+      <Header {...{ username: formatUsername(username), avatar }} />
       <Image style={styles.image} source={{ uri: imageUrl }} />
       <Footer {...{ post }} />
     </View>

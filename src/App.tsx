@@ -17,6 +17,7 @@ import {
 import Notifications from "@screens/Notifications";
 import { SCREENS } from "./constants";
 import Stories from "@screens/Main/Home/Stories";
+import { HEADER_HEIGHT } from "@screens/Main/Home/InstagramHeader";
 
 const Stack = createStackNavigator();
 const queryClient = new QueryClient();
@@ -38,7 +39,8 @@ const App = () => {
           <Stack.Screen
             options={{
               headerStyle: {
-                backgroundColor: "black",
+                backgroundColor: "#161616",
+                height: HEADER_HEIGHT,
               },
               headerTintColor: "white",
             }}

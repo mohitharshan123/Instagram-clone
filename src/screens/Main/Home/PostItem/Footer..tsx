@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { PostObject } from ".";
+import { formatUsername } from "utils";
 
 const Footer: React.FC<{ post: PostObject }> = ({ post }) => {
   const { likes, caption, username } = post;
@@ -35,7 +36,7 @@ const Footer: React.FC<{ post: PostObject }> = ({ post }) => {
       <View style={styles.bottomContainer}>
         <Text style={styles.boldText}>{likes} Likes</Text>
         <View style={styles.captionContainer}>
-          <Text style={styles.boldText}>{username}</Text>
+          <Text style={styles.boldText}>{formatUsername(username)}</Text>
           <Text style={styles.caption}>{caption}</Text>
         </View>
         <Text style={styles.timeAgo}>1 hr ago</Text>

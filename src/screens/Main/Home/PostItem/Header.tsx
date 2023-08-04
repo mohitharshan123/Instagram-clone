@@ -1,5 +1,14 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ViewStyle,
+} from "react-native";
+import { GLOBAL_STYLES } from "styles";
+import { formatUsername } from "utils";
 import { PostObject } from ".";
 
 import { HorizontalInfo } from "../../../../../assets";
@@ -12,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ username, avatar }) => {
     <View style={styles.container}>
       <TouchableOpacity activeOpacity={0.7} style={styles.userContainer}>
         <Image style={styles.avatar} source={{ uri: avatar }} />
-        <Text style={styles.username}>{username}</Text>
+        <Text style={styles.username}>{formatUsername(username)}</Text>
       </TouchableOpacity>
       <TouchableOpacity>
         <HorizontalInfo />
@@ -41,14 +50,7 @@ const styles = StyleSheet.create({
     gap: 10,
     alignItems: "center",
   },
-  username: {
-    color: "white",
-    fontFamily: "SF UI Display",
-    fontSize: 12,
-    fontStyle: "normal",
-    fontWeight: "700",
-    lineHeight: 16,
-  },
+  username: GLOBAL_STYLES.dark.username.bold as ViewStyle,
 });
 
 export default Header;
