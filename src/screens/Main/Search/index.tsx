@@ -18,7 +18,9 @@ export type ImageObject = {
 
 export const VALIDATION_SCHEMA = false;
 
-const Search = () => {
+const Search: React.FC<{ hideSearchBar: boolean }> = ({
+  hideSearchBar = false,
+}) => {
   const { data: images, refetch, isRefetching } = useFetchSearchImages();
 
   const translationY = useSharedValue(0);
@@ -52,7 +54,7 @@ const Search = () => {
 
   return (
     <Layout>
-      <TopBar scrollPosition={translationY} />
+      {!hideSearchBar && <TopBar scrollPosition={translationY} />}
       <Animated.FlatList
         onScroll={scrollHandler}
         data={images}

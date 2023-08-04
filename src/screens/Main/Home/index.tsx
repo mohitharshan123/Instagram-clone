@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { clamp } from "utils";
-import Stories from "./Stories/AvatarList";
+import Stories from "../../../components/AvatarList";
 
 const Home: React.FC<any> = ({ navigation }) => {
   const { data: posts, refetch, isRefetching } = useFetchPosts();
